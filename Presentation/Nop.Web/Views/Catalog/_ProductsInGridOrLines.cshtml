@@ -1,0 +1,96 @@
+﻿@model CatalogProductsModel
+
+@if (!string.IsNullOrEmpty(Model.WarningMessage))
+{
+    <div class="warning">
+        @Model.WarningMessage
+    </div>
+}
+
+@if (Model.Products.Count > 0)
+{
+    <div class="@(Model.ViewMode == "list" ? "product-list" : "product-grid")">
+        <div class="item-grid">
+            @foreach (var product in Model.Products)
+            {
+                <div class="item-box">
+                    @await Html.PartialAsync("_ProductBox", product)
+                </div>
+            }
+        </div>
+    </div>
+
+    var pager = Html.Pager(Model)
+        .QueryParam("pagenumber")
+        // for search page
+        .BooleanParameterName("advs")
+        .BooleanParameterName("isc")
+        .BooleanParameterName("sid")
+        .RenderEmptyParameters(true);
+
+    @if (!await pager.IsEmpty())
+    {
+        <div class="pager">
+            @pager
+        </div>
+    }
+}
+else if (!string.IsNullOrEmpty(Model.NoResultMessage))
+{
+    <div class="no-result">
+        @Model.NoResultMessage
+    </div>
+}
+
+<script asp-location="Footer">
+    var productMixArray = [];
+
+    function AddToMixBox(e) {
+        var element = $(e);
+        console.log("Mixed:", element.data());
+
+        const data= element.data();
+        let isExist =  productMixArray.some(item => item.productId === data.productId);
+        if (!isExist) {
+             productMixArray.push(data);
+            console.log("Đã thêm:", data);
+        } else {
+            console.log("Đối tượng đã tồn tại trong mảng.");
+        }
+        RenderBlockMixProduct();
+        return false;
+    }
+
+
+    function RenderBlockMixProduct(){
+        const $block = $('.block-mix-product');
+        let resultImage = "/images/thumbs/results-word.webp"; // Ảnh kết quả
+
+        let html = `<div class="product-list">`;
+
+        productMixArray.forEach((product, index) => {
+            //html += `<img src="${product.productImg}" alt="Product ${index + 1}">`;
+             html += `
+            <div class="product-item" style=" position: relative;">
+                <img src="${product.productImg}" alt="Product ${index + 1}">
+                    <button class="btn-delete" onclick="removeProduct(${index})" style=" position: absolute;right: 0;padding: 3px; border: none;border-radius: 5px;"><span class="ui-icon ui-icon-closethick"></span></button>
+            </div>`;
+            if (index < productMixArray.length - 1) {
+                html += `<span> + </span>`;
+            }
+        });
+        if(productMixArray.length >=2 ){
+            html += `<span> = </span>`;
+            html += `<img src="${resultImage}" alt="Result">`;
+        }
+        html += `</div>`;
+
+        $block.html(html);
+
+    }
+
+    function removeProduct(index){
+        productMixArray.splice(index, 1);
+        RenderBlockMixProduct();
+    }
+</script>
