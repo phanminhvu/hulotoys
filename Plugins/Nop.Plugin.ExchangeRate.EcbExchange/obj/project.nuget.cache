@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+zp1w18Pfvo=",
+  "dgSpecHash": "LVwiBqdZbuw=",
   "success": true,
-  "projectFilePath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Plugins\\Nop.Plugin.ExchangeRate.EcbExchange\\Nop.Plugin.ExchangeRate.EcbExchange.csproj",
+  "projectFilePath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.ExchangeRate.EcbExchange\\Nop.Plugin.ExchangeRate.EcbExchange.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\autofac\\8.1.0\\autofac.8.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\autofac.extensions.dependencyinjection\\10.0.0\\autofac.extensions.dependencyinjection.10.0.0.nupkg.sha512",

@@ -9607,11 +9607,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Plugins\\Nop.Plugin.ExchangeRate.EcbExchange\\Nop.Plugin.ExchangeRate.EcbExchange.csproj",
+      "projectUniqueName": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.ExchangeRate.EcbExchange\\Nop.Plugin.ExchangeRate.EcbExchange.csproj",
       "projectName": "Nop.Plugin.ExchangeRate.EcbExchange",
-      "projectPath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Plugins\\Nop.Plugin.ExchangeRate.EcbExchange\\Nop.Plugin.ExchangeRate.EcbExchange.csproj",
+      "projectPath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.ExchangeRate.EcbExchange\\Nop.Plugin.ExchangeRate.EcbExchange.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Plugins\\Nop.Plugin.ExchangeRate.EcbExchange\\obj\\",
+      "outputPath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.ExchangeRate.EcbExchange\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -9634,8 +9634,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Libraries\\Nop.Services\\Nop.Services.csproj": {
-              "projectPath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Libraries\\Nop.Services\\Nop.Services.csproj"
+            "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj": {
+              "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj"
             }
           }
         }

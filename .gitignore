@@ -194,3 +194,10 @@ src/Tests/Nop.Tests/Connections.resx
 /Libraries/Nop.Services/obj
 /Libraries/Nop.Core/obj
 /Libraries/Nop.Data/obj
+/Plugins/Nop.Plugin.ExchangeRate.EcbExchange/obj
+/Plugins/Nop.Plugin.ExternalAuth.Facebook/obj
+/Plugins/Nop.Plugin.Misc.NopMobileApp/obj
+/Plugins/Nop.Plugin.Misc.OmnibusDirective/obj
+/Plugins/Nop.Plugin.Misc.Omnisend/obj
+/Plugins/Nop.Plugin.Misc.PowerBI/obj
+/Plugins/Nop.Plugin.Misc.WebApi.Frontend/obj

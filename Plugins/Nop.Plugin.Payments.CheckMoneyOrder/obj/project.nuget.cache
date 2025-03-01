@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iB4xePeq+/Y=",
+  "dgSpecHash": "IpM5JY3ICy4=",
   "success": true,
-  "projectFilePath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Plugins\\Nop.Plugin.Payments.CheckMoneyOrder\\Nop.Plugin.Payments.CheckMoneyOrder.csproj",
+  "projectFilePath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Payments.CheckMoneyOrder\\Nop.Plugin.Payments.CheckMoneyOrder.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\advancedstringbuilder\\0.1.1\\advancedstringbuilder.0.1.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\autofac\\8.1.0\\autofac.8.1.0.nupkg.sha512",

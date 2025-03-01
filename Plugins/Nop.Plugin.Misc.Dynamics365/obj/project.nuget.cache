@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JJ5W8z5prbs=",
+  "dgSpecHash": "njCDzX8+bao=",
   "success": true,
-  "projectFilePath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Plugins\\Nop.Plugin.Misc.Dynamics365\\Nop.Plugin.Misc.Dynamics365.csproj",
+  "projectFilePath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Misc.Dynamics365\\Nop.Plugin.Misc.Dynamics365.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\advancedstringbuilder\\0.1.1\\advancedstringbuilder.0.1.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\autofac\\8.1.0\\autofac.8.1.0.nupkg.sha512",

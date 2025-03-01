@@ -10014,11 +10014,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Plugins\\Nop.Plugin.Pickup.PickupInStore\\Nop.Plugin.Pickup.PickupInStore.csproj",
+      "projectUniqueName": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Pickup.PickupInStore\\Nop.Plugin.Pickup.PickupInStore.csproj",
       "projectName": "Nop.Plugin.Pickup.PickupInStore",
-      "projectPath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Plugins\\Nop.Plugin.Pickup.PickupInStore\\Nop.Plugin.Pickup.PickupInStore.csproj",
+      "projectPath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Pickup.PickupInStore\\Nop.Plugin.Pickup.PickupInStore.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Plugins\\Nop.Plugin.Pickup.PickupInStore\\obj\\",
+      "outputPath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Pickup.PickupInStore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -10041,8 +10041,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
-              "projectPath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj"
+            "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
+              "projectPath": "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj"
             }
           }
         }

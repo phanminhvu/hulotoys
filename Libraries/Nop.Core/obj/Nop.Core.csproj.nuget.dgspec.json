@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Libraries\\Nop.Core\\Nop.Core.csproj": {}
+    "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {}
   },
   "projects": {
-    "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+    "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
       "version": "4.90.0",
       "restore": {
-        "projectUniqueName": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "projectUniqueName": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
         "projectName": "Nop.Core",
-        "projectPath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Learn\\NopCommerce\\nopCommerce\\src\\Libraries\\Nop.Core\\obj\\",
+        "outputPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
