@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Payments.PayPalCommerce\\Nop.Plugin.Payments.PayPalCommerce.csproj": {}
+    "D:\\hulotoys\\Plugins\\Nop.Plugin.Payments.PayPalCommerce\\Nop.Plugin.Payments.PayPalCommerce.csproj": {}
   },
   "projects": {
-    "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+    "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
       "version": "4.90.0",
       "restore": {
-        "projectUniqueName": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "projectUniqueName": "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
         "projectName": "Nop.Core",
-        "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\obj\\",
+        "projectPath": "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
+        "outputPath": "D:\\hulotoys\\Libraries\\Nop.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,8 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
@@ -52,7 +50,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -127,25 +125,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+    "D:\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj": {
       "version": "4.90.0",
       "restore": {
-        "projectUniqueName": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj",
+        "projectUniqueName": "D:\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj",
         "projectName": "Nop.Data",
-        "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Data\\obj\\",
+        "projectPath": "D:\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj",
+        "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
+        "outputPath": "D:\\hulotoys\\Libraries\\Nop.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -154,15 +151,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj"
               }
             }
           }
@@ -183,7 +179,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -238,25 +234,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj": {
+    "D:\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj": {
       "version": "4.90.0",
       "restore": {
-        "projectUniqueName": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj",
+        "projectUniqueName": "D:\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj",
         "projectName": "Nop.Services",
-        "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Services\\obj\\",
+        "projectPath": "D:\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj",
+        "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
+        "outputPath": "D:\\hulotoys\\Libraries\\Nop.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -265,18 +260,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj"
               },
-              "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj"
+              "D:\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+                "projectPath": "D:\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj"
               }
             }
           }
@@ -297,7 +291,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -372,25 +366,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Payments.PayPalCommerce\\Nop.Plugin.Payments.PayPalCommerce.csproj": {
+    "D:\\hulotoys\\Plugins\\Nop.Plugin.Payments.PayPalCommerce\\Nop.Plugin.Payments.PayPalCommerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Payments.PayPalCommerce\\Nop.Plugin.Payments.PayPalCommerce.csproj",
+        "projectUniqueName": "D:\\hulotoys\\Plugins\\Nop.Plugin.Payments.PayPalCommerce\\Nop.Plugin.Payments.PayPalCommerce.csproj",
         "projectName": "Nop.Plugin.Payments.PayPalCommerce",
-        "projectPath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Payments.PayPalCommerce\\Nop.Plugin.Payments.PayPalCommerce.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Payments.PayPalCommerce\\obj\\",
+        "projectPath": "D:\\hulotoys\\Plugins\\Nop.Plugin.Payments.PayPalCommerce\\Nop.Plugin.Payments.PayPalCommerce.csproj",
+        "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
+        "outputPath": "D:\\hulotoys\\Plugins\\Nop.Plugin.Payments.PayPalCommerce\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -399,15 +392,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj"
+              "D:\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj": {
+                "projectPath": "D:\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj"
               }
             }
           }
@@ -428,7 +420,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -449,25 +441,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
+    "D:\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
       "version": "4.90.0",
       "restore": {
-        "projectUniqueName": "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
+        "projectUniqueName": "D:\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
         "projectName": "Nop.Web.Framework",
-        "projectPath": "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web.Framework\\obj\\",
+        "projectPath": "D:\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
+        "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
+        "outputPath": "D:\\hulotoys\\Presentation\\Nop.Web.Framework\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -476,21 +467,20 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj"
               },
-              "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj"
+              "D:\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+                "projectPath": "D:\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj"
               },
-              "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj"
+              "D:\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj": {
+                "projectPath": "D:\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj"
               }
             }
           }
@@ -511,7 +501,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -550,25 +540,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj": {
+    "D:\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj": {
       "version": "4.90.0",
       "restore": {
-        "projectUniqueName": "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj",
+        "projectUniqueName": "D:\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj",
         "projectName": "Nop.Web",
-        "projectPath": "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web\\obj\\",
+        "projectPath": "D:\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj",
+        "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
+        "outputPath": "D:\\hulotoys\\Presentation\\Nop.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -577,24 +566,23 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "D:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj"
               },
-              "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj"
+              "D:\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+                "projectPath": "D:\\hulotoys\\Libraries\\Nop.Data\\Nop.Data.csproj"
               },
-              "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj"
+              "D:\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj": {
+                "projectPath": "D:\\hulotoys\\Libraries\\Nop.Services\\Nop.Services.csproj"
               },
-              "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
-                "projectPath": "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj"
+              "D:\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
+                "projectPath": "D:\\hulotoys\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj"
               }
             }
           }
@@ -615,7 +603,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -639,7 +627,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
