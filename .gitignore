@@ -170,8 +170,7 @@ glob:*.user
 *.hg
 
 # Build artifacts
-Libraries/
-Build/
+
 bin/
 obj/
 *.dll
