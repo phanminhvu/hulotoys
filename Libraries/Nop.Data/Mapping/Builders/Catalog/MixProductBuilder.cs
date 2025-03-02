@@ -18,6 +18,10 @@ public partial class MixProductBuilder : NopEntityBuilder<MixProduct>
     {
         table
                 .WithColumn(nameof(MixProduct.ProductIds)).AsString(int.MaxValue).NotNullable()
+                .WithColumn(nameof(MixProduct.OrderId)).AsInt32().Nullable()
+                .WithColumn(nameof(MixProduct.Status)).AsInt32().Nullable()
+                .WithColumn(nameof(MixProduct.Note)).AsString(int.MaxValue).Nullable()
+                .WithColumn(nameof(MixProduct.ProductIds)).AsString(int.MaxValue).NotNullable()
                 .WithColumn(nameof(MixProduct.Deleted)).AsBoolean().WithDefaultValue(false);
     }
 

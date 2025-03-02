@@ -11,6 +11,11 @@ public partial class MixProduct : BaseEntity, ISoftDeletedEntity
     /// Danh sách các sản phẩm thành phần
     /// </summary>
     public int CustomerId { get; set; }
+
+    /// <summary>
+    /// order Id
+    /// </summary>
+    public int? OrderId { get; set; }
     /// <summary>
     /// Danh sách các sản phẩm thành phần
     /// </summary>
@@ -19,6 +24,11 @@ public partial class MixProduct : BaseEntity, ISoftDeletedEntity
     /// Trạng thái : 1: in Cart ; 2: Payment 
     /// </summary>
     public int Status { get; set; }
+
+    /// <summary>
+    /// Ghi chú
+    /// </summary>
+    public int? Note { get; set; }
     /// <summary>
     /// Trang thái xoá
     /// </summary>
