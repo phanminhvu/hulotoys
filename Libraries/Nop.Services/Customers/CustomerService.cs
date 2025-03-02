@@ -275,7 +275,7 @@ public partial class CustomerService : ICustomerService
     /// A task that represents the asynchronous operation
     /// The task result contains the customers
     /// </returns>
-    public virtual async Task<IPagedList<Customer>> GetCustomersWithShoppingCartsAsync(ShoppingCartType? shoppingCartType = null,
+    public virtual async Task<IPagedList<Customer>> GetCustomersWithShoppingCartsAsync(int? shoppingCartType = null,
         int storeId = 0, int? productId = null,
         DateTime? createdFromUtc = null, DateTime? createdToUtc = null, int? countryId = null,
         int pageIndex = 0, int pageSize = int.MaxValue)

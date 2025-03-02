@@ -107,7 +107,7 @@ public partial class ShoppingCartModelFactory : IShoppingCartModelFactory
         await _baseAdminModelFactory.PrepareShoppingCartTypesAsync(searchModel.AvailableShoppingCartTypes, false);
 
         //set default search values
-        searchModel.ShoppingCartType = ShoppingCartType.ShoppingCart;
+        searchModel.ShoppingCartType = (int)ShoppingCartType.ShoppingCart;
 
         //prepare available billing countries
         searchModel.AvailableCountries = (await _countryService.GetAllCountriesForBillingAsync(showHidden: true))
@@ -141,7 +141,7 @@ public partial class ShoppingCartModelFactory : IShoppingCartModelFactory
         ArgumentNullException.ThrowIfNull(searchModel);
 
         //get customers with shopping carts
-        var customers = await _customerService.GetCustomersWithShoppingCartsAsync(searchModel.ShoppingCartType,
+        var customers = await _customerService.GetCustomersWithShoppingCartsAsync((int)searchModel.ShoppingCartType,
             storeId: searchModel.StoreId,
             productId: searchModel.ProductId,
             createdFromUtc: searchModel.StartDate,
@@ -165,7 +165,7 @@ public partial class ShoppingCartModelFactory : IShoppingCartModelFactory
                     ? customer.Email
                     : await _localizationService.GetResourceAsync("Admin.Customers.Guest");
                 shoppingCartModel.TotalItems = (await _shoppingCartService
-                        .GetShoppingCartAsync(customer, searchModel.ShoppingCartType,
+                        .GetShoppingCartAsync(customer, (ShoppingCartType)searchModel.ShoppingCartType,
                             searchModel.StoreId, searchModel.ProductId, searchModel.StartDate, searchModel.EndDate))
                     .Sum(item => item.Quantity);
 

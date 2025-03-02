@@ -26,7 +26,7 @@ public partial record ShoppingCartSearchModel : BaseSearchModel
     #region Properties
 
     [NopResourceDisplayName("Admin.ShoppingCartType.ShoppingCartType")]
-    public ShoppingCartType ShoppingCartType { get; set; }
+    public int ShoppingCartType { get; set; }
 
     [NopResourceDisplayName("Admin.ShoppingCartType.StartDate")]
     [UIHint("DateNullable")]
