@@ -170,6 +170,8 @@ glob:*.user
 *.hg
 
 # Build artifacts
+Libraries/
+Build/
 bin/
 obj/
 *.dll
@@ -178,10 +180,15 @@ obj/
 *.pdb
 
 # Visual Studio files
-.vscode/
+.vs/
 *.user
 *.suo
 
-# Secrets
-appsettings*.json
+# Log files
+*.log
+*.pdb
+
+# Deployment
+*.publish/
+*.zip
 
