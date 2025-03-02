@@ -760,7 +760,7 @@ public class OmnisendService
     public async Task SyncCartsAsync()
     {
         var store = await _storeContext.GetCurrentStoreAsync();
-        var customers = await _customerService.GetCustomersWithShoppingCartsAsync(ShoppingCartType.ShoppingCart, store.Id);
+        var customers = await _customerService.GetCustomersWithShoppingCartsAsync((int)ShoppingCartType.ShoppingCart, store.Id);
         foreach (var customer in customers)
         {
             var cart = await _shoppingCartService.GetShoppingCartAsync(customer, ShoppingCartType.ShoppingCart, store.Id);
