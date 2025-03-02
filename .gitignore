@@ -201,3 +201,4 @@ src/Tests/Nop.Tests/Connections.resx
 /Plugins/Nop.Plugin.Misc.Omnisend/obj
 /Plugins/Nop.Plugin.Misc.PowerBI/obj
 /Plugins/Nop.Plugin.Misc.WebApi.Frontend/obj
+/Presentation/Nop.Web.Framework/obj
