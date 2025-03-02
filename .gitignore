@@ -169,36 +169,19 @@ glob:*.user
 *.patch
 *.hg
 
-src/Presentation/Nop.Web/node_modules/*
+# Build artifacts
+bin/
+obj/
+*.dll
+*.exe
+*.log
+*.pdb
 
+# Visual Studio files
+.vscode/
+*.user
+*.suo
 
-src/packages/*
-src/Tests/Nop.Tests/Connections.resx
-/Presentation/Nop.Web/node_modules
-/Libraries/Nop.Data/obj
-/Libraries/Nop.Core/bin
-/Libraries/Nop.Data/bin
-/Libraries/Nop.Services/bin
-/Presentation/Nop.Web/bin
-/Presentation/Nop.Web.Framework/bin
-/Plugins/Nop.Plugin.Misc.Dynamics365/obj
-/Plugins/Nop.Plugin.Misc.Zettle/obj
-/Plugins/Nop.Plugin.Payments.AmazonPay/obj
-/Plugins/Nop.Plugin.Payments.CheckMoneyOrder/obj
-/Plugins/Nop.Plugin.Payments.PayPalCommerce/obj
-/Plugins/Nop.Plugin.Pickup.PickupInStore/obj
-/Plugins/Nop.Plugin.Shipping.FixedByWeightByTotal/obj
-/Plugins/Nop.Plugin.Widgets.FacebookPixel/obj
-/Presentation/Nop.Web.Framework/obj
-/Presentation/Nop.Web/obj
-/Libraries/Nop.Services/obj
-/Libraries/Nop.Core/obj
-/Libraries/Nop.Data/obj
-/Plugins/Nop.Plugin.ExchangeRate.EcbExchange/obj
-/Plugins/Nop.Plugin.ExternalAuth.Facebook/obj
-/Plugins/Nop.Plugin.Misc.NopMobileApp/obj
-/Plugins/Nop.Plugin.Misc.OmnibusDirective/obj
-/Plugins/Nop.Plugin.Misc.Omnisend/obj
-/Plugins/Nop.Plugin.Misc.PowerBI/obj
-/Plugins/Nop.Plugin.Misc.WebApi.Frontend/obj
-/Presentation/Nop.Web.Framework/obj
+# Secrets
+appsettings*.json
+
