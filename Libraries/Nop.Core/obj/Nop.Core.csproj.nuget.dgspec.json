@@ -1,21 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {}
+    "E:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {}
   },
   "projects": {
-    "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+    "E:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj": {
       "version": "4.90.0",
       "restore": {
-        "projectUniqueName": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "projectUniqueName": "E:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
         "projectName": "Nop.Core",
-        "projectPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "projectPath": "E:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\obj\\",
+        "outputPath": "E:\\hulotoys\\Libraries\\Nop.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {

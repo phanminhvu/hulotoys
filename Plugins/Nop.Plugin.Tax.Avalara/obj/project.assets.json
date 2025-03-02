@@ -11624,21 +11624,19 @@
   },
   "packageFolders": {
     "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Tax.Avalara\\Nop.Plugin.Tax.Avalara.csproj",
+      "projectUniqueName": "E:\\hulotoys\\Plugins\\Nop.Plugin.Tax.Avalara\\Nop.Plugin.Tax.Avalara.csproj",
       "projectName": "Nop.Plugin.Tax.Avalara",
-      "projectPath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Tax.Avalara\\Nop.Plugin.Tax.Avalara.csproj",
+      "projectPath": "E:\\hulotoys\\Plugins\\Nop.Plugin.Tax.Avalara\\Nop.Plugin.Tax.Avalara.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Tax.Avalara\\obj\\",
+      "outputPath": "E:\\hulotoys\\Plugins\\Nop.Plugin.Tax.Avalara\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -11650,15 +11648,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.cloudsmith.io/orchardcore/preview/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj": {
-              "projectPath": "D:\\Freelacer\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj"
+            "E:\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj": {
+              "projectPath": "E:\\hulotoys\\Presentation\\Nop.Web\\Nop.Web.csproj"
             }
           }
         }

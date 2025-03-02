@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MMtDtsXkb14=",
+  "dgSpecHash": "Z+CRrKZaCFY=",
   "success": true,
-  "projectFilePath": "D:\\Freelacer\\hulotoys\\Plugins\\Nop.Plugin.Misc.WebApi.Frontend\\Nop.Plugin.Misc.WebApi.Frontend.csproj",
+  "projectFilePath": "E:\\hulotoys\\Plugins\\Nop.Plugin.Misc.WebApi.Frontend\\Nop.Plugin.Misc.WebApi.Frontend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\advancedstringbuilder\\0.1.1\\advancedstringbuilder.0.1.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\autofac\\8.1.0\\autofac.8.1.0.nupkg.sha512",
@@ -223,7 +223,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\webmarkupmin.aspnet.common\\2.18.0\\webmarkupmin.aspnet.common.2.18.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\webmarkupmin.aspnetcorelatest\\2.18.0\\webmarkupmin.aspnetcorelatest.2.18.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\webmarkupmin.core\\2.17.0\\webmarkupmin.core.2.17.0.nupkg.sha512",

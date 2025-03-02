@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tQRRjxfCjSA=",
+  "dgSpecHash": "3z9Nie9U7rs=",
   "success": true,
-  "projectFilePath": "D:\\Freelacer\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
+  "projectFilePath": "E:\\hulotoys\\Libraries\\Nop.Core\\Nop.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\autofac\\8.1.0\\autofac.8.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\autofac.extensions.dependencyinjection\\10.0.0\\autofac.extensions.dependencyinjection.10.0.0.nupkg.sha512",
