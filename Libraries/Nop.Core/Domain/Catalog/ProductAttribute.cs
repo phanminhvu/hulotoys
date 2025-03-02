@@ -16,4 +16,6 @@ public partial class ProductAttribute : BaseEntity, ILocalizedEntity
     /// Gets or sets the description
     /// </summary>
     public string Description { get; set; }
+    public decimal Price { get; set; }
+    public bool IsMixed { get; set; }
 }

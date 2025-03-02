@@ -17,6 +17,9 @@ public partial class ProductAttributeBuilder : NopEntityBuilder<ProductAttribute
     public override void MapEntity(CreateTableExpressionBuilder table)
     {
         table.WithColumn(nameof(ProductAttribute.Name)).AsString(int.MaxValue).NotNullable();
+        table.WithColumn(nameof(ProductAttribute.Price)).AsDecimal(18, 2).NotNullable();
+        table.WithColumn(nameof(ProductAttribute.IsMixed)).AsBoolean().NotNullable();
+
     }
 
     #endregion

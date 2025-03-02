@@ -1004,6 +1004,8 @@ public partial class ProductController : BaseAdminController
         return View(model);
     }
 
+
+    //Hàm thêm mới product
     [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
     [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
     public virtual async Task<IActionResult> Create(ProductModel model, bool continueEditing)
@@ -1082,6 +1084,79 @@ public partial class ProductController : BaseAdminController
         //if we got this far, something failed, redisplay form
         return View(model);
     }
+
+
+    [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
+    [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
+    public virtual async Task<IActionResult> CreateProduct(ProductModel model, bool continueEditing)
+    {
+        var currentVendor = await _workContext.GetCurrentVendorAsync();
+
+        // Kiểm tra số lượng sản phẩm tối đa của vendor
+        if (_vendorSettings.MaximumProductNumber > 0 &&
+            currentVendor != null &&
+            await _productService.GetNumberOfProductsByVendorIdAsync(currentVendor.Id) >= _vendorSettings.MaximumProductNumber)
+        {
+            var errorMessage = string.Format(await _localizationService.GetResourceAsync("Admin.Catalog.Products.ExceededMaximumNumber"),
+                _vendorSettings.MaximumProductNumber);
+
+            return Json(new { success = false, message = errorMessage });
+        }
+
+        if (ModelState.IsValid)
+        {
+            // Gán VendorId nếu là vendor
+            if (currentVendor != null)
+                model.VendorId = currentVendor.Id;
+
+            // Không cho vendor chỉnh "Show on home page"
+            if (currentVendor != null && model.ShowOnHomepage)
+                model.ShowOnHomepage = false;
+
+            // Chuyển model thành entity và lưu vào database
+            var product = model.ToEntity<Product>();
+            product.CreatedOnUtc = DateTime.UtcNow;
+            product.UpdatedOnUtc = DateTime.UtcNow;
+            await _productService.InsertProductAsync(product);
+
+            // Cập nhật URL SEO
+            model.SeName = await _urlRecordService.ValidateSeNameAsync(product, model.SeName, product.Name, true);
+            await _urlRecordService.SaveSlugAsync(product, model.SeName, 0);
+
+            // Cập nhật các thông tin liên quan
+            await UpdateLocalesAsync(product, model);
+            await SaveCategoryMappingsAsync(product, model);
+            await SaveManufacturerMappingsAsync(product, model);
+            await _productService.UpdateProductStoreMappingsAsync(product, model.SelectedStoreIds);
+            await SaveDiscountMappingsAsync(product, model);
+            await _productTagService.UpdateProductTagsAsync(product, model.SelectedProductTags.ToArray());
+            await SaveProductWarehouseInventoryAsync(product, model);
+
+            // Lưu lịch sử thay đổi số lượng
+            await _productService.AddStockQuantityHistoryEntryAsync(product, product.StockQuantity, product.StockQuantity, product.WarehouseId,
+                await _localizationService.GetResourceAsync("Admin.StockQuantityHistory.Messages.Edit"));
+
+            // Ghi log hoạt động
+            await _customerActivityService.InsertActivityAsync("AddNewProduct",
+                string.Format(await _localizationService.GetResourceAsync("ActivityLog.AddNewProduct"), product.Name), product);
+
+            _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Admin.Catalog.Products.Added"));
+
+            return Json(new
+            {
+                success = true,
+                message = "Product added successfully",
+                productId = product.Id,  // Trả về ProductId
+                redirectUrl = continueEditing ? Url.Action("Edit", new { id = product.Id }) : Url.Action("List")
+            });
+        }
+
+        // Nếu có lỗi, trả về JSON với thông báo lỗi
+        var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+        return Json(new { success = false, message = "Validation failed", errors });
+    }
+
+
 
     [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
     public virtual async Task<IActionResult> Edit(int id)
@@ -2109,6 +2184,8 @@ public partial class ProductController : BaseAdminController
 
     #region Product specification attributes
 
+
+    //hàm câp nhật product attribute
     [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
     [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
     public virtual async Task<IActionResult> ProductSpecificationAttributeAdd(AddSpecificationAttributeModel model, bool continueEditing)
@@ -2181,6 +2258,82 @@ public partial class ProductController : BaseAdminController
         SaveSelectedCardName("product-specification-attributes");
         return RedirectToAction("Edit", new { id = model.ProductId });
     }
+
+
+    //Hàm này để thêm attribute vào product
+    [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
+    [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
+    public virtual async Task<IActionResult> ProductAttributeAdd(AddSpecificationAttributeModel model, bool continueEditing)
+    {
+        var product = await _productService.GetProductByIdAsync(model.ProductId);
+        if (product == null)
+        {
+            return Json(new { success = false, message = "No product found with the specified id" });
+        }
+
+        // Kiểm tra vendor chỉ có quyền trên sản phẩm của họ
+        var currentVendor = await _workContext.GetCurrentVendorAsync();
+        if (currentVendor != null && product.VendorId != currentVendor.Id)
+        {
+            return Json(new { success = false, message = "Unauthorized access" });
+        }
+
+        // Chỉ cho phép lọc nếu là kiểu Option
+        if (model.AttributeTypeId != (int)SpecificationAttributeType.Option)
+            model.AllowFiltering = false;
+
+        // Không cho phép CustomValue nếu là kiểu Option
+        if (model.AttributeTypeId == (int)SpecificationAttributeType.Option)
+            model.ValueRaw = null;
+
+        // Lưu trữ HTML nếu trường hỗ trợ
+        if (model.AttributeTypeId == (int)SpecificationAttributeType.CustomText || model.AttributeTypeId == (int)SpecificationAttributeType.Hyperlink)
+            model.ValueRaw = model.Value;
+
+        var psa = model.ToEntity<ProductSpecificationAttribute>();
+        psa.CustomValue = model.ValueRaw;
+        await _specificationAttributeService.InsertProductSpecificationAttributeAsync(psa);
+
+        // Lưu giá trị ngôn ngữ nếu có
+        switch (psa.AttributeType)
+        {
+            case SpecificationAttributeType.CustomText:
+                foreach (var localized in model.Locales)
+                {
+                    await _localizedEntityService.SaveLocalizedValueAsync(psa,
+                        x => x.CustomValue,
+                        localized.Value,
+                        localized.LanguageId);
+                }
+                break;
+            case SpecificationAttributeType.CustomHtmlText:
+                foreach (var localized in model.Locales)
+                {
+                    await _localizedEntityService.SaveLocalizedValueAsync(psa,
+                        x => x.CustomValue,
+                        localized.ValueRaw,
+                        localized.LanguageId);
+                }
+                break;
+            case SpecificationAttributeType.Option:
+            case SpecificationAttributeType.Hyperlink:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        return Json(new
+        {
+            success = true,
+            message = "Specification attribute added successfully",
+            specificationId = psa.Id,
+            productId = psa.ProductId,
+            redirectUrl = continueEditing
+                ? Url.Action("ProductSpecAttributeAddOrEdit", new { productId = psa.ProductId, specificationId = psa.Id })
+                : Url.Action("Edit", new { id = model.ProductId })
+        });
+    }
+
 
     [HttpPost]
     [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
@@ -2307,6 +2460,8 @@ public partial class ProductController : BaseAdminController
         }
     }
 
+
+    //Hàm xóa attribute ra khỏi sản phẩm
     [HttpPost]
     [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
     public virtual async Task<IActionResult> ProductSpecAttrDelete(AddSpecificationAttributeModel model)
@@ -2335,6 +2490,32 @@ public partial class ProductController : BaseAdminController
         SaveSelectedCardName("product-specification-attributes");
 
         return RedirectToAction("Edit", new { id = psa.ProductId });
+    }
+
+
+
+    //Call hàm này để xóa attribute trong product
+    [HttpPost]
+    [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
+    public virtual async Task<IActionResult> ProductAttributeDelete(AddSpecificationAttributeModel model)
+    {
+        //try to get a product specification attribute with the specified id
+        var psa = await _specificationAttributeService.GetProductSpecificationAttributeByIdAsync(model.SpecificationId);
+        if (psa == null)
+        {
+            return Json(new { success = false, message = "No product specification attribute found with the specified id" });
+        }
+
+        //a vendor should have access only to his products
+        var currentVendor = await _workContext.GetCurrentVendorAsync();
+        if (currentVendor != null && (await _productService.GetProductByIdAsync(psa.ProductId)).VendorId != currentVendor.Id)
+        {
+            return Json(new { success = false, message = "This is not your product" });
+        }
+
+        await _specificationAttributeService.DeleteProductSpecificationAttributeAsync(psa);
+
+        return Json(new { success = true, message = "Product specification attribute deleted successfully", productId = psa.ProductId });
     }
 
     #endregion

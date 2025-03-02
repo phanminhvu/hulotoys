@@ -97,6 +97,24 @@ public partial class ProductAttributeController : BaseAdminController
         return View(model);
     }
 
+
+
+    //Lấy danh sách Attribute
+    [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
+    public virtual async Task<JsonResult> ListAttribute()
+    {
+        // Chuẩn bị model
+        var model = await _productAttributeModelFactory.PrepareProductAttributeSearchModelAsync(new ProductAttributeSearchModel());
+
+        // Trả về JSON response
+        return Json(new
+        {
+            success = true,
+            data = model
+        });
+    }
+
+
     [HttpPost]
     [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
     public virtual async Task<IActionResult> List(ProductAttributeSearchModel searchModel)

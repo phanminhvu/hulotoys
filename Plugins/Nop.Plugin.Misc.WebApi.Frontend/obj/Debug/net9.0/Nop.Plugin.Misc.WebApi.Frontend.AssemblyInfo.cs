@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Nop Solutions, Ltd")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c688eb595cbfffa0a7123914cf84d4df916657a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6483f4610f6b21907102dc2ee8689c363d204af7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nop.Plugin.Misc.WebApi.Frontend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nop.Plugin.Misc.WebApi.Frontend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
