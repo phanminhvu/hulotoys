@@ -5,7 +5,7 @@ namespace Nop.Core.Domain.Catalog;
 /// <summary>
 /// Sản phẩm kết hợp
 /// </summary>
-public partial class MixProduct : BaseEntity, ISoftDeletedEntity
+public partial class MixProduct : BaseEntity
 {
     /// <summary>
     /// Danh sách các sản phẩm thành phần
@@ -28,11 +28,5 @@ public partial class MixProduct : BaseEntity, ISoftDeletedEntity
     /// <summary>
     /// Ghi chú
     /// </summary>
-    public int? Note { get; set; }
-    /// <summary>
-    /// Trang thái xoá
-    /// </summary>
-    /// 
-    public bool Deleted { get; set; }
-
+    public string? Note { get; set; }
 }

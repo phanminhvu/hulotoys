@@ -116,7 +116,7 @@
                 @if (catalog != null && (bool)catalog)
                 {
                     var addToCartText = "Mix";
-                    <button type="button" class="button-2 product-box-add-to-cart-button" data-product-id="@Model.SeName" data-product-name="@Model.Name" data-product-img="@Model.PictureModels.First().ImageUrl" onclick="AddToMixBox(this);return false;">@(addToCartText)</button>
+                    <button type="button" class="button-2 product-box-add-to-cart-button" data-product-id="@Model.Id" data-product-type="@shoppingCartTypeId" data-product-name="@Model.Name" data-product-img="@Model.PictureModels.First().ImageUrl" onclick="AddToMixBox(this);return false;">@(addToCartText)</button>
                 }
                 else
                 {

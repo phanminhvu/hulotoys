@@ -85,6 +85,25 @@ var AjaxCart = {
         });
     },
 
+    //add a product to the cart/wishlist from the product details page
+    postJson: function (url, dataObject) {
+        if (this.loadWaiting !== false) {
+            return;
+        }
+        this.setLoadWaiting(true);
+
+        $.ajax({
+            cache: false,
+            url: url,
+            data: JSON.stringify(dataObject),
+            contentType: "application/json",
+            type: "POST",
+            success: this.success_process,
+            complete: this.resetLoadWaiting,
+            error: this.ajaxFailure
+        });
+    },
+
     success_process: function (response) {
         if (response.updatetopcartsectionhtml) {
             $(AjaxCart.topcartselector).html(response.updatetopcartsectionhtml);

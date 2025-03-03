@@ -47,16 +47,11 @@ else if (!string.IsNullOrEmpty(Model.NoResultMessage))
 
     function AddToMixBox(e) {
         var element = $(e);
-        console.log("Mixed:", element.data());
-
         const data= element.data();
         let isExist =  productMixArray.some(item => item.productId === data.productId);
         if (!isExist) {
              productMixArray.push(data);
-            console.log("Đã thêm:", data);
-        } else {
-            console.log("Đối tượng đã tồn tại trong mảng.");
-        }
+        } 
         RenderBlockMixProduct();
         return false;
     }
@@ -85,9 +80,28 @@ else if (!string.IsNullOrEmpty(Model.NoResultMessage))
         }
         html += `</div>`;
 
+        if(productMixArray.length >=2 ){
+          html += `<div style="text-align:center; margin-bottom: 10px;"> <button class="ui-button ui-widget ui-corner-all " style="background-color: #4ab2f1;    text-align: center;    font-size: 15px;    color: #fff;    text-transform: uppercase;" onclick="AddMixProductsToCart()">
+              Add to cart
+          </button> <div>`;
+        }
+
         $block.html(html);
 
     }
+    function AddMixProductsToCart(){
+        console.log('add product to cart:', productMixArray);
+        var dataProducts =  productMixArray.map(x => ({
+            ProductId : x["productId"],
+            ProductType : x["productType"],
+        }));
+        AjaxCart.postJson("api/mixproduct", {
+            ProductIds: JSON.stringify(dataProducts)
+        });
+        productMixArray = [];
+        $('.block-mix-product').html('');
+    }
+
 
     function removeProduct(index){
         productMixArray.splice(index, 1);

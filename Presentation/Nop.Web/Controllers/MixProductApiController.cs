@@ -1,18 +1,57 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Nop.Core;
 using Nop.Core.Domain.Catalog;
+using Nop.Core.Domain.Orders;
 using Nop.Data;
+using Nop.Services.Catalog;
+using Nop.Services.Customers;
+using Nop.Services.Localization;
+using Nop.Services.Orders;
+using Nop.Web.Areas.Admin.Models.Catalog;
+using Nop.Web.Components;
+using Nop.Web.Framework.Controllers;
+using Nop.Web.Models.Catalog;
+using System.Text.Json;
+
 
 namespace Nop.Web.Controllers
 {
     [Route("api/mixproduct")]
     [ApiController]
-    public class MixProductApiController : ControllerBase
+    public class MixProductApiController : BaseController
     {
         private readonly IRepository<MixProduct> _mixProductRepository;
-
-        public MixProductApiController(IRepository<MixProduct> mixProductRepository)
+        private readonly IShoppingCartService _shoppingCartService;
+        protected readonly IStoreContext _storeContext;
+        private readonly IWorkContext _workContext;
+        private readonly IProductService _productService;
+        private readonly ICustomerService _customerService;
+        private readonly ILogger _logger;
+        protected readonly ILocalizationService _localizationService;
+        protected readonly ShoppingCartSettings _shoppingCartSettings;
+        private readonly INopDataProvider _nopDataProvider;
+        public MixProductApiController(IRepository<MixProduct> mixProductRepository,
+           IShoppingCartService shoppingCartService,
+            IWorkContext workContext,
+            IProductService productService,
+            ICustomerService customerService,
+            IStoreContext storeContext,
+            ILocalizationService localizationService, 
+            ShoppingCartSettings shoppingCartSettings,
+            INopDataProvider nopDataProvider,
+            ILogger logger
+        )
         {
             _mixProductRepository = mixProductRepository;
+            _shoppingCartService = shoppingCartService;
+            _workContext = workContext;
+            _productService = productService;
+            _customerService = customerService;
+            _localizationService = localizationService;
+            _shoppingCartSettings = shoppingCartSettings;
+            _logger = logger;
+            _storeContext = storeContext;
+            _nopDataProvider = nopDataProvider;
         }
 
         [HttpGet]
@@ -33,13 +72,97 @@ namespace Nop.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] MixProduct model)
+        public async Task<IActionResult> CreateorUpdateAsync([FromBody] ProductsMixRequestModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+            var customer = await _workContext.GetCurrentCustomerAsync();
+            
+            if (customer == null)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Not found data customer"
+                });
+            }
+            var listProducts = JsonSerializer.Deserialize<List<ProductsMixInfoModel>>(model.ProductIds);
+            if (listProducts == null || listProducts.Count == 0)
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "Product list is empty"
+                });
+            }
+            
+            try
+            {
+                var store = await _storeContext.GetCurrentStoreAsync();
+                var cart = await _shoppingCartService.GetShoppingCartAsync(customer);
 
-            _mixProductRepository.Insert(model);
-            return CreatedAtAction(nameof(GetById), new { id = model.Id }, model);
+                for (var x = 0; x < listProducts.Count; x++)
+                {
+                    var item = listProducts[x];
+                    var product = await _productService.GetProductByIdAsync(item.ProductId);
+                    if (product == null)
+                    {
+                        return Ok(new
+                        {
+                            success = false,
+                            message = "Not found data product"
+                        });
+                    }
+                    var productInCart = cart.FirstOrDefault(x => x.CustomerId == customer.Id && x.ProductId == item.ProductId);
+                    if (productInCart != null)
+                    {
+
+                        await _shoppingCartService.UpdateShoppingCartItemAsync(customer, productInCart.Id, productInCart.AttributesXml, productInCart.CustomerEnteredPrice, quantity: productInCart.Quantity + item.Quantity);
+                    }
+                    else
+                    {
+                        await _shoppingCartService.AddToCartAsync(customer, product, (ShoppingCartType)item.ProductType, store.Id, quantity: item.Quantity);
+                    }
+
+                }
+
+                await _mixProductRepository.InsertAsync(new MixProduct
+                {
+                    CustomerId = customer.Id,
+                    Status = model.Status,
+                    ProductIds = model.ProductIds,
+                });
+
+
+                var shoppingCarts = await _shoppingCartService.GetShoppingCartAsync(customer, ShoppingCartType.ShoppingCart, store.Id);
+
+                var updateTopCartSectionHtml = string.Format(
+                    await _localizationService.GetResourceAsync("ShoppingCart.HeaderQuantity"),
+                    shoppingCarts.Sum(item => item.Quantity));
+
+                var updateFlyoutCartSectionHtml = _shoppingCartSettings.MiniShoppingCartEnabled
+                     ? await RenderViewComponentToStringAsync(typeof(FlyoutShoppingCartViewComponent))
+                     : string.Empty;
+
+                return Ok(new
+                {
+                    success = true,
+                    message = string.Format(await _localizationService.GetResourceAsync("Products.ProductHasBeenAddedToTheCart.Link"),
+                        Url.RouteUrl("ShoppingCart")),
+                    updatetopcartsectionhtml = updateTopCartSectionHtml,
+                    updateflyoutcartsectionhtml = updateFlyoutCartSectionHtml
+                });
+                
+            }
+            catch (Exception ex)
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "Add product to cart fail"
+                });
+            }
+            
         }
 
         [HttpPut("{id}")]
@@ -50,7 +173,6 @@ namespace Nop.Web.Controllers
                 return NotFound();
 
             mixProduct.ProductIds = model.ProductIds;
-            mixProduct.Deleted = model.Deleted;
 
             _mixProductRepository.Update(mixProduct);
             return NoContent();
@@ -66,6 +188,6 @@ namespace Nop.Web.Controllers
             _mixProductRepository.Delete(mixProduct);
             return NoContent();
         }
-
+       
     }
 }
