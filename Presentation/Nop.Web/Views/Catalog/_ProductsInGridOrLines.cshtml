@@ -74,10 +74,7 @@ else if (!string.IsNullOrEmpty(Model.NoResultMessage))
                 html += `<span> + </span>`;
             }
         });
-        if(productMixArray.length >=2 ){
-            html += `<span> = </span>`;
-            html += `<img src="${resultImage}" alt="Result">`;
-        }
+        
         html += `</div>`;
 
         if(productMixArray.length >=2 ){

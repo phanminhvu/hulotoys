@@ -125,11 +125,11 @@
 
                             @await Html.PartialAsync("_ProductTierPrices", Model.TierPrices)
 
-                            var dataDictAddToCart = new ViewDataDictionary(ViewData);
-                            dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-                            @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
+                            //var dataDictAddToCart = new ViewDataDictionary(ViewData);
+                            // dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
+                            // @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
 
-                            @await Html.PartialAsync("_ProductEstimateShipping", Model.ProductEstimateShipping)
+                            //@await Html.PartialAsync("_ProductEstimateShipping", Model.ProductEstimateShipping)
                         }
                         <!--wishlist, compare, email a friend-->
                         <div class="overview-buttons">

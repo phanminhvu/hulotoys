@@ -104,6 +104,23 @@ var AjaxCart = {
         });
     },
 
+    removeMixProduct: function (url) {
+        if (this.loadWaiting !== false) {
+            return;
+        }
+        this.setLoadWaiting(true);
+
+        $.ajax({
+            cache: false,
+            url: url,
+            type: "POST",
+            success: this.success_process,
+            complete: this.resetLoadWaiting,
+            error: this.ajaxFailure
+        });
+    },
+
+
     success_process: function (response) {
         if (response.updatetopcartsectionhtml) {
             $(AjaxCart.topcartselector).html(response.updatetopcartsectionhtml);
@@ -145,6 +162,9 @@ var AjaxCart = {
         return false;
     },
 
+    remove_success: function (response) {
+
+    },
     resetLoadWaiting: function () {
         AjaxCart.setLoadWaiting(false);
     },

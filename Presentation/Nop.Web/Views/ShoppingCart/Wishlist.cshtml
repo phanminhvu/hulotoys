@@ -246,10 +246,10 @@
                         {
                             <button type="submit" name="updatecart" id="updatecart" class="button-2 update-wishlist-button">@T("Wishlist.UpdateCart")</button>
                         }
-                        @if (Model.DisplayAddToCart)
+                        @* @if (Model.DisplayAddToCart)
                         {
                             <button type="submit" name="addtocartbutton" class="button-2 wishlist-add-to-cart-button">@T("ShoppingCart.AddToCart")</button>
-                        }
+                        } *@
                         @if (Model.IsEditable && Model.EmailWishlistEnabled)
                         {
                             <button type="button" class="button-2 email-a-friend-wishlist-button" onclick="setLocation('@Url.RouteUrl("EmailWishlist")')">@T("Wishlist.EmailAFriend")</button>

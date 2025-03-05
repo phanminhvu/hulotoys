@@ -1,0 +1,15 @@
+version: "3.4"
+services:
+  nopcommerce:
+    image: hulotoys:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=103.163.216.171:5432;Database=nopecommerce;Username=admin;Password=admin123
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+
+    volumes:
+      - ./App_Data:/app/App_Data

@@ -15,6 +15,7 @@ using Nop.Core.Domain.Orders;
 using Nop.Core.Domain.Security;
 using Nop.Core.Domain.Vendors;
 using Nop.Core.Infrastructure;
+using Nop.Data;
 using Nop.Services.Common;
 using Nop.Services.Customers;
 using Nop.Services.Directory;
@@ -75,7 +76,7 @@ public partial class CommonModelFactory : ICommonModelFactory
     protected readonly SitemapXmlSettings _sitemapXmlSettings;
     protected readonly StoreInformationSettings _storeInformationSettings;
     protected readonly VendorSettings _vendorSettings;
-
+    private readonly IRepository<MixProduct> _mixProductRepository;
     #endregion
 
     #region Ctor
@@ -114,8 +115,10 @@ public partial class CommonModelFactory : ICommonModelFactory
         SitemapSettings sitemapSettings,
         SitemapXmlSettings sitemapXmlSettings,
         StoreInformationSettings storeInformationSettings,
+        IRepository<MixProduct> mixProductRepository,
         VendorSettings vendorSettings)
     {
+        _mixProductRepository = mixProductRepository;
         _blogSettings = blogSettings;
         _captchaSettings = captchaSettings;
         _catalogSettings = catalogSettings;
@@ -366,8 +369,7 @@ public partial class CommonModelFactory : ICommonModelFactory
         //performance optimization (use "HasShoppingCartItems" property)
         if (customer.HasShoppingCartItems)
         {
-            model.ShoppingCartItems = (await _shoppingCartService.GetShoppingCartAsync(customer, ShoppingCartType.ShoppingCart, store.Id))
-                .Sum(item => item.Quantity);
+            model.ShoppingCartItems = _mixProductRepository.Table.Where(x => x.CustomerId == customer.Id).Count(); ;
 
             model.WishlistItems = (await _shoppingCartService.GetShoppingCartAsync(customer, ShoppingCartType.Wishlist, store.Id))
                 .Sum(item => item.Quantity);

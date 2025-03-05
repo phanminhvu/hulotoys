@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Nop.Core;
 using Nop.Core.Caching;
@@ -11,6 +12,7 @@ using Nop.Core.Domain.Security;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Http.Extensions;
 using Nop.Core.Infrastructure;
+using Nop.Data;
 using Nop.Services.Attributes;
 using Nop.Services.Catalog;
 using Nop.Services.Common;
@@ -35,8 +37,10 @@ using Nop.Web.Framework.Mvc;
 using Nop.Web.Framework.Mvc.Filters;
 using Nop.Web.Framework.Mvc.Routing;
 using Nop.Web.Infrastructure.Cache;
+using Nop.Web.Models.Catalog;
 using Nop.Web.Models.Media;
 using Nop.Web.Models.ShoppingCart;
+using System.Text.Json;
 
 namespace Nop.Web.Controllers;
 
@@ -83,12 +87,14 @@ public partial class ShoppingCartController : BasePublicController
     protected readonly ShoppingCartSettings _shoppingCartSettings;
     protected readonly ShippingSettings _shippingSettings;
     private static readonly char[] _separator = [','];
+    private readonly IRepository<MixProduct> _mixProductRepository;
 
     #endregion
 
     #region Ctor
 
     public ShoppingCartController(CaptchaSettings captchaSettings,
+        IRepository<MixProduct> mixProductRepository,
         CustomerSettings customerSettings,
         IAttributeParser<CheckoutAttribute, CheckoutAttributeValue> checkoutAttributeParser,
         IAttributeService<CheckoutAttribute, CheckoutAttributeValue> checkoutAttributeService,
@@ -163,6 +169,7 @@ public partial class ShoppingCartController : BasePublicController
         _orderSettings = orderSettings;
         _shoppingCartSettings = shoppingCartSettings;
         _shippingSettings = shippingSettings;
+        _mixProductRepository = mixProductRepository;
     }
 
     #endregion
@@ -1189,7 +1196,7 @@ public partial class ShoppingCartController : BasePublicController
         var cart = await _shoppingCartService.GetShoppingCartAsync(customer, ShoppingCartType.ShoppingCart, store.Id);
 
         //get identifiers of items to remove
-        var itemIdsToRemove = form["removefromcart"]
+        var mixProductIds= form["removefromcart"]
             .SelectMany(value => value.Split(_separator, StringSplitOptions.RemoveEmptyEntries))
             .Select(idString => int.TryParse(idString, out var id) ? id : 0)
             .Distinct().ToList();
@@ -1197,33 +1204,70 @@ public partial class ShoppingCartController : BasePublicController
         var products = (await _productService.GetProductsByIdsAsync(cart.Select(item => item.ProductId).Distinct().ToArray()))
             .ToDictionary(item => item.Id, item => item);
 
-        //get order items with changed quantity
-        var itemsWithNewQuantity = cart.Select(item => new
+        var list = new List<int>();
+        
+        foreach(var id in mixProductIds)
         {
-            //try to get a new quantity for the item, set 0 for items to remove
-            NewQuantity = itemIdsToRemove.Contains(item.Id) ? 0 : int.TryParse(form[$"itemquantity{item.Id}"], out var quantity) ? quantity : item.Quantity,
-            Item = item,
-            Product = products.TryGetValue(item.ProductId, out var value) ? value : null
-        }).Where(item => item.NewQuantity != item.Item.Quantity);
+            var mixProductObject = _mixProductRepository.GetById(id);
+            var listProducts = JsonSerializer.Deserialize<List<ProductsMixInfoModel>>(mixProductObject.ProductIds).ToList();
+
+            for (var x = 0; x < listProducts.Count; x++)
+            {
+                var item = listProducts[x];
+                var product = await _productService.GetProductByIdAsync(id);
+                if (product == null)
+                {
+                    continue;
+                }
+                var productInCart = cart.FirstOrDefault(x => x.CustomerId == customer.Id && x.ProductId == item.ProductId);
+                if (productInCart != null)
+                {
+                    // Giảm số lượng sản phẩm con theo số lượng sản phẩm mix
+                    if (productInCart.Quantity > item.Quantity)
+                    {
+                        await _shoppingCartService.UpdateShoppingCartItemAsync(customer, productInCart.Id, productInCart.AttributesXml, productInCart.CustomerEnteredPrice, quantity: productInCart.Quantity - item.Quantity);
+                    }
+                    else
+                    {
+                        await _shoppingCartService.DeleteShoppingCartItemAsync(productInCart, true, false);
+                    }
+                }
+
+            }
+            _mixProductRepository.Delete(mixProductObject);
+        }
+        
+
+        var itemIdsToRemove = list;
+
+
+        //get order items with changed quantity
+        //var itemsWithNewQuantity = cart.Select(item => new
+        //{
+        //    //try to get a new quantity for the item, set 0 for items to remove
+        //    NewQuantity = itemIdsToRemove.Contains(item.Id) ? 0 : item.Quantity,
+        //    Item = item,
+        //    Product = products.TryGetValue(item.ProductId, out var value) ? value : null
+        //}).Where(item => item.NewQuantity != item.Item.Quantity);
 
         //order cart items
         //first should be items with a reduced quantity and that require other products; or items with an increased quantity and are required for other products
-        var orderedCart = await itemsWithNewQuantity
-            .OrderByDescendingAwait(async cartItem =>
-                (cartItem.NewQuantity < cartItem.Item.Quantity &&
-                 (cartItem.Product?.RequireOtherProducts ?? false)) ||
-                (cartItem.NewQuantity > cartItem.Item.Quantity && cartItem.Product != null && (await _shoppingCartService
-                    .GetProductsRequiringProductAsync(cart, cartItem.Product)).Any()))
-            .ToListAsync();
+        //var orderedCart = await itemsWithNewQuantity
+        //    .OrderByDescendingAwait(async cartItem =>
+        //        (cartItem.NewQuantity < cartItem.Item.Quantity &&
+        //         (cartItem.Product?.RequireOtherProducts ?? false)) ||
+        //        (cartItem.NewQuantity > cartItem.Item.Quantity && cartItem.Product != null && (await _shoppingCartService
+        //            .GetProductsRequiringProductAsync(cart, cartItem.Product)).Any()))
+        //    .ToListAsync();
 
         //try to update cart items with new quantities and get warnings
-        var warnings = await orderedCart.SelectAwait(async cartItem => new
-        {
-            ItemId = cartItem.Item.Id,
-            Warnings = await _shoppingCartService.UpdateShoppingCartItemAsync(customer,
-                cartItem.Item.Id, cartItem.Item.AttributesXml, cartItem.Item.CustomerEnteredPrice,
-                cartItem.Item.RentalStartDateUtc, cartItem.Item.RentalEndDateUtc, cartItem.NewQuantity, true)
-        }).ToListAsync();
+        //var warnings = await itemsWithNewQuantity.SelectAwait(async cartItem => new
+        //{
+        //    ItemId = cartItem.Item.Id,
+        //    Warnings = await _shoppingCartService.UpdateShoppingCartItemAsync(customer,
+        //        cartItem.Item.Id, cartItem.Item.AttributesXml, cartItem.Item.CustomerEnteredPrice,
+        //        cartItem.Item.RentalStartDateUtc, cartItem.Item.RentalEndDateUtc, cartItem.NewQuantity, true)
+        //}).ToListAsync();
 
         //updated cart
         cart = await _shoppingCartService.GetShoppingCartAsync(customer, ShoppingCartType.ShoppingCart, store.Id);
@@ -1236,13 +1280,13 @@ public partial class ShoppingCartController : BasePublicController
         model = await _shoppingCartModelFactory.PrepareShoppingCartModelAsync(model, cart);
 
         //update current warnings
-        foreach (var warningItem in warnings.Where(warningItem => warningItem.Warnings.Any()))
-        {
-            //find shopping cart item model to display appropriate warnings
-            var itemModel = model.Items.FirstOrDefault(item => item.Id == warningItem.ItemId);
-            if (itemModel != null)
-                itemModel.Warnings = warningItem.Warnings.Concat(itemModel.Warnings).Distinct().ToList();
-        }
+        //foreach (var warningItem in warnings.Where(warningItem => warningItem.Warnings.Any()))
+        //{
+        //    //find shopping cart item model to display appropriate warnings
+        //    var itemModel = model.Items.FirstOrDefault(item => item.Id == warningItem.ItemId);
+        //    if (itemModel != null)
+        //        itemModel.Warnings = warningItem.Warnings.Concat(itemModel.Warnings).Distinct().ToList();
+        //}
 
         return View(model);
     }
